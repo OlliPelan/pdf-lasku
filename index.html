@@ -10,86 +10,89 @@
 <body class="bg-gray-100 p-4 font-sans pb-10">
 
     <div class="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Uusi lasku</h1>
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Uusi lasku</h1>
         
         <div class="space-y-6">
             
-            <!-- Yleiset tiedot (Ylinnä) -->
-            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-4 shadow-sm">
-                <h2 class="text-xs font-bold text-blue-600 uppercase tracking-wider text-center">Laskun perustiedot</h2>
-                <div class="space-y-4">
-                    <div class="w-1/2 mx-auto">
-                        <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Laskun nro</label>
-                        <input type="number" id="laskun_numero" value="1001" class="w-full border border-gray-300 rounded-lg px-2 py-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-bold text-gray-800 text-center">
+            <!-- Yleiset tiedot -->
+            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3 shadow-sm">
+                <h2 class="text-xs font-bold text-blue-600 uppercase tracking-wider">Laskun perustiedot</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Laskun numero</label>
+                        <input type="number" id="laskun_numero" value="1001" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-bold text-gray-800">
                     </div>
-                    <div class="w-1/2 mx-auto">
-                        <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Eräpäivä</label>
-                        <input type="date" id="erapaiva" class="w-full border border-gray-300 rounded-lg px-2 py-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Eräpäivä</label>
+                        <input type="date" id="erapaiva" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                     </div>
                 </div>
             </div>
 
-            <!-- Omat tiedot (Täysi leveys teksteille) -->
+            <!-- Omat tiedot -->
             <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3">
-                <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider text-center">Omat tiedot (Laskuttaja)</h2>
+                <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Omat tiedot (Laskuttaja)</h2>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Nimi / Yritys</label>
-                    <input type="text" id="laskuttaja" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center" placeholder="Oma Nimesi">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Nimi / Yritys</label>
+                    <input type="text" id="laskuttaja" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Oma Nimesi">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Katuosoite ja postitoimipaikka</label>
-                    <input type="text" id="laskuttaja_osoite" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center" placeholder="Esim. Esimerkkitie 1, 00100 Helsinki">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Katuosoite ja postitoimipaikka</label>
+                    <input type="text" id="laskuttaja_osoite" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Esim. Esimerkkitie 1, 00100 Helsinki">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Y-tunnus</label>
-                    <input type="text" id="laskuttaja_ytunnus" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center" placeholder="1234567-8">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 text-center">IBAN-tilinumero</label>
-                    <input type="text" id="iban" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center" placeholder="FI00...">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Y-tunnus</label>
+                        <input type="text" id="laskuttaja_ytunnus" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="1234567-8">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">IBAN-tilinumero</label>
+                        <input type="text" id="iban" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="FI00...">
+                    </div>
                 </div>
             </div>
 
-            <!-- Asiakkaan tiedot (Täysi leveys teksteille) -->
+            <!-- Asiakkaan tiedot -->
             <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3">
-                <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider text-center">Asiakkaan tiedot</h2>
+                <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Asiakkaan tiedot</h2>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Asiakkaan nimi</label>
-                    <input type="text" id="asiakas" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center" placeholder="Matti Meikäläinen">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Asiakkaan nimi</label>
+                    <input type="text" id="asiakas" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Matti Meikäläinen">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Osoite</label>
-                    <input type="text" id="asiakas_osoite" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center" placeholder="Asiakkaan osoite">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Osoite</label>
+                    <input type="text" id="asiakas_osoite" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Asiakkaan osoite">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Asiakkaan Y-tunnus</label>
-                    <input type="text" id="asiakas_ytunnus" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center" placeholder="9876543-2">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Asiakkaan Y-tunnus</label>
+                    <input type="text" id="asiakas_ytunnus" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="9876543-2">
                 </div>
             </div>
 
-            <!-- Laskutettava työ (Omilla riveillään, 50% keskitetty) -->
-            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-4">
-                <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider text-center">Laskutettava työ</h2>
+            <!-- Laskutettava työ -->
+            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3">
+                <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Laskutettava työ</h2>
                 
-                <div class="space-y-4">
-                    <div class="w-1/2 mx-auto">
-                        <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Työn pvm</label>
-                        <input type="date" id="tyo_pvm" class="w-full border border-gray-300 rounded-lg px-2 py-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center">
+                <!-- Pvm ja Kuvaus pinotaan mobiilissa päällekkäisyyden estämiseksi -->
+                <div class="grid grid-cols-1 gap-3">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Työn pvm</label>
+                        <input type="date" id="tyo_pvm" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                     </div>
-                    <div class="w-1/2 mx-auto">
-                        <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Kuvaus</label>
-                        <input type="text" id="kuvaus" class="w-full border border-gray-300 rounded-lg px-2 py-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center" placeholder="Esim. Pesu">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Kuvaus</label>
+                        <input type="text" id="kuvaus" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Esim. Ikkunoiden pesu">
                     </div>
                 </div>
 
-                <div class="space-y-4 pt-2 border-t border-gray-200 mt-4">
-                    <div class="w-1/2 mx-auto mt-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-1 text-center">Veroton hinta (€)</label>
-                        <input type="number" id="hinta" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-center" placeholder="150">
+                <div class="grid grid-cols-2 gap-3 pt-2">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Veroton hinta (€)</label>
+                        <input type="number" id="hinta" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="150">
                     </div>
-                    <div class="w-1/2 mx-auto">
-                        <label class="block text-sm font-medium text-gray-700 mb-1 text-center">ALV %</label>
-                        <select id="alv_prosentti" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white text-center appearance-none">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">ALV %</label>
+                        <select id="alv_prosentti" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white">
                             <option value="25.5">25,5 %</option>
                             <option value="13.5">13,5 %</option>
                             <option value="10">10 %</option>
@@ -170,6 +173,7 @@
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
 
+            // OTSIKKO JA PÄIVÄMÄÄRÄT
             doc.setFontSize(24);
             doc.setTextColor(37, 99, 235);
             doc.setFont("helvetica", "bold");
@@ -186,6 +190,7 @@
             doc.setLineWidth(0.5);
             doc.line(20, 42, 190, 42);
 
+            // OSOITETIEDOT
             doc.setFontSize(9);
             doc.setTextColor(107, 114, 128);
             doc.setFont("helvetica", "bold");
@@ -211,6 +216,7 @@
             if (asiakas_osoite) { aY += 5; doc.text(asiakas_osoite, 105, aY); }
             if (asiakas_yt) { aY += 5; doc.text(`Y-tunnus: ${asiakas_yt}`, 105, aY); }
 
+            // TAULUKKO
             doc.setFillColor(243, 244, 246);
             doc.rect(20, 82, 170, 10, "F");
             doc.setFont("helvetica", "bold");
@@ -228,6 +234,7 @@
             doc.setDrawColor(229, 231, 235);
             doc.line(20, 106, 190, 106);
 
+            // SUMMAT
             doc.setFontSize(11);
             const alvOtsikko = `ALV (${alvValintaStr.replace('.', ',')} %):`;
             doc.text(alvOtsikko, 130, 118);
@@ -241,6 +248,7 @@
             doc.setDrawColor(37, 99, 235);
             doc.line(130, 132, 190, 132);
 
+            // ALATUNNISTE
             doc.setDrawColor(229, 231, 235);
             doc.line(20, 270, 190, 270);
             
