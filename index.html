@@ -15,82 +15,82 @@
         <div class="space-y-6">
             
             <!-- Laskun perustiedot -->
-            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3 shadow-sm">
+            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3 shadow-sm w-full">
                 <h2 class="text-xs font-bold text-blue-600 uppercase tracking-wider">Laskun perustiedot</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+                    <div class="min-w-0">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Laskun numero</label>
-                        <input type="number" id="laskun_numero" value="1001" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-bold text-gray-800">
+                        <input type="number" id="laskun_numero" value="1001" class="w-full max-w-full min-w-0 bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-bold text-gray-800 box-border block">
                     </div>
-                    <div>
+                    <div class="min-w-0">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Eräpäivä</label>
-                        <input type="date" id="erapaiva" class="w-full bg-[#FDF8EE] border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <input type="date" id="erapaiva" class="w-full max-w-full min-w-0 bg-[#FDF8EE] border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block">
                     </div>
                 </div>
             </div>
 
             <!-- Omat tiedot -->
-            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3">
+            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3 w-full">
                 <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Omat tiedot (Laskuttaja)</h2>
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Nimi / Yritys</label>
-                    <input type="text" id="laskuttaja" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Oma Nimesi">
+                    <input type="text" id="laskuttaja" class="w-full max-w-full min-w-0 bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block" placeholder="Oma Nimesi">
                 </div>
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Katuosoite ja postitoimipaikka</label>
-                    <input type="text" id="laskuttaja_osoite" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Esim. Esimerkkitie 1, 00100 Helsinki">
+                    <input type="text" id="laskuttaja_osoite" class="w-full max-w-full min-w-0 bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block" placeholder="Esim. Esimerkkitie 1, 00100 Helsinki">
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+                    <div class="min-w-0">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Y-tunnus</label>
-                        <input type="text" id="laskuttaja_ytunnus" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="1234567-8">
+                        <input type="text" id="laskuttaja_ytunnus" class="w-full max-w-full min-w-0 bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block" placeholder="1234567-8">
                     </div>
-                    <div>
+                    <div class="min-w-0">
                         <label class="block text-sm font-medium text-gray-700 mb-1">IBAN-tilinumero</label>
-                        <input type="text" id="iban" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="FI00...">
+                        <input type="text" id="iban" class="w-full max-w-full min-w-0 bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block" placeholder="FI00...">
                     </div>
                 </div>
             </div>
 
             <!-- Asiakkaan tiedot -->
-            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3">
+            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3 w-full">
                 <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Asiakkaan tiedot</h2>
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Asiakkaan nimi</label>
-                    <input type="text" id="asiakas" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Matti Meikäläinen">
+                    <input type="text" id="asiakas" class="w-full max-w-full min-w-0 bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block" placeholder="Matti Meikäläinen">
                 </div>
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Katuosoite ja postitoimipaikka</label>
-                    <input type="text" id="asiakas_osoite" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Esim. Esimerkkitie 1, 00100 Helsinki">
+                    <input type="text" id="asiakas_osoite" class="w-full max-w-full min-w-0 bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block" placeholder="Esim. Esimerkkitie 1, 00100 Helsinki">
                 </div>
-                <div>
+                <div class="min-w-0">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Asiakkaan Y-tunnus</label>
-                    <input type="text" id="asiakas_ytunnus" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="9876543-2">
+                    <input type="text" id="asiakas_ytunnus" class="w-full max-w-full min-w-0 bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block" placeholder="9876543-2">
                 </div>
             </div>
 
             <!-- Laskutettava työ -->
-            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3">
+            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3 w-full">
                 <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Laskutettava työ</h2>
-                <div class="grid grid-cols-1 gap-3">
-                    <div>
+                <div class="grid grid-cols-1 gap-3 w-full">
+                    <div class="min-w-0">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Työn pvm</label>
-                        <input type="date" id="tyo_pvm" class="w-full bg-[#FDF8EE] border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <input type="date" id="tyo_pvm" class="w-full max-w-full min-w-0 bg-[#FDF8EE] border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block">
                     </div>
-                    <div>
+                    <div class="min-w-0">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Kuvaus</label>
-                        <input type="text" id="kuvaus" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Esim. Ikkunoiden pesu">
+                        <input type="text" id="kuvaus" class="w-full max-w-full min-w-0 bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block" placeholder="Esim. Ikkunoiden pesu">
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3 pt-2">
-                    <div>
+                <div class="grid grid-cols-2 gap-3 pt-2 w-full">
+                    <div class="min-w-0">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Veroton hinta (€)</label>
-                        <input type="number" id="hinta" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="150">
+                        <input type="number" id="hinta" class="w-full max-w-full min-w-0 bg-white border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 box-border block" placeholder="150">
                     </div>
-                    <div>
+                    <div class="min-w-0">
                         <label class="block text-sm font-medium text-gray-700 mb-1">ALV %</label>
-                        <select id="alv_prosentti" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white">
+                        <select id="alv_prosentti" class="w-full max-w-full min-w-0 border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white box-border block">
                             <option value="25.5">25,5 %</option>
                             <option value="13.5">13,5 %</option>
                             <option value="10">10 %</option>
