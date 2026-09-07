@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Luo Lasku</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Tuodaan jsPDF, joka piirtää oikean PDF-tiedoston luotettavasti mobiilissa -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
-<body class="bg-gray-100 p-4 font-sans">
+<body class="bg-gray-100 p-4 font-sans pb-10">
 
-    <!-- Mobiilisovelluksen näkymä (lomake) -->
     <div class="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
         <h1 class="text-2xl font-bold text-gray-800 mb-6">Uusi lasku</h1>
         
         <div class="space-y-5">
+            <!-- Omat tiedot -->
             <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 space-y-3">
                 <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide">Omat tiedot</h2>
                 <div>
@@ -26,6 +27,7 @@
                 </div>
             </div>
 
+            <!-- Asiakkaan tiedot -->
             <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 space-y-3">
                 <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wide">Asiakkaan tiedot</h2>
                 <div>
@@ -38,6 +40,7 @@
                 </div>
             </div>
 
+            <!-- Laskun rivit -->
             <div class="space-y-3 pt-2">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Laskutettava työ</label>
@@ -49,75 +52,9 @@
                 </div>
             </div>
 
-            <button onclick="luoPDF()" class="w-full bg-blue-600 text-white font-semibold rounded-lg p-4 mt-2 hover:bg-blue-700 active:bg-blue-800 transition">
+            <button onclick="luoPDF()" class="w-full bg-blue-600 text-white font-semibold rounded-lg p-4 mt-2 hover:bg-blue-700 active:bg-blue-800 transition shadow-md">
                 Luo PDF ja lataa
             </button>
-        </div>
-    </div>
-
-    <!-- PIILOTETTU PDF-POHJA (Pakotettu työpöytäasettelu) -->
-    <div style="position: absolute; left: -9999px; top: 0;">
-        <div id="lasku-pohja" style="width: 800px; padding: 50px; background-color: white; color: #111827; font-family: Arial, sans-serif; box-sizing: border-box;">
-            
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #2563eb; padding-bottom: 20px; margin-bottom: 40px;">
-                <h2 style="font-size: 38px; color: #2563eb; font-weight: bold; margin: 0; text-transform: uppercase; letter-spacing: 1px;">Lasku</h2>
-                <div style="text-align: right; font-size: 15px;">
-                    <strong>Pvm:</strong> <span id="out-pvm"></span><br>
-                    <strong>Eräpäivä:</strong> <span id="out-erapaiva"></span>
-                </div>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; margin-bottom: 50px; font-size: 15px;">
-                <div style="width: 48%;">
-                    <p style="font-size: 12px; color: #6b7280; text-transform: uppercase; font-weight: bold; margin-bottom: 5px;">Laskuttaja</p>
-                    <p style="font-size: 18px; font-weight: bold; margin: 0 0 4px 0;" id="out-laskuttaja"></p>
-                    <p style="margin: 0;" id="out-laskuttaja-ytunnus-container">Y-tunnus: <span id="out-laskuttaja-ytunnus"></span></p>
-                </div>
-                <div style="width: 48%;">
-                    <p style="font-size: 12px; color: #6b7280; text-transform: uppercase; font-weight: bold; margin-bottom: 5px;">Asiakas</p>
-                    <p style="font-size: 18px; font-weight: bold; margin: 0 0 4px 0;" id="out-asiakas"></p>
-                    <p style="margin: 0;" id="out-asiakas-ytunnus-container">Y-tunnus: <span id="out-asiakas-ytunnus"></span></p>
-                </div>
-            </div>
-
-            <table style="width: 100%; border-collapse: collapse; margin-bottom: 40px; font-size: 15px;">
-                <thead>
-                    <tr style="background-color: #f3f4f6;">
-                        <th style="padding: 12px; text-align: left; border-bottom: 1px solid #d1d5db;">Kuvaus</th>
-                        <th style="padding: 12px; text-align: right; border-bottom: 1px solid #d1d5db;">Veroton hinta</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;" id="out-kuvaus"></td>
-                        <td style="padding: 12px; text-align: right; border-bottom: 1px solid #e5e7eb;" id="out-hinta"></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div style="display: flex; justify-content: flex-end; font-size: 15px;">
-                <div style="width: 50%;">
-                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e5e7eb;">
-                        <span>ALV (25,5 %):</span>
-                        <span id="out-alv"></span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 18px; font-weight: bold; border-bottom: 2px solid #2563eb;">
-                        <span>Yhteensä maksettava:</span>
-                        <span id="out-yhteensa"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 80px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 13px; color: #6b7280; display: flex; justify-content: space-between;">
-                <div>
-                    <strong>Saaja:</strong> <span id="out-footer-laskuttaja"></span><br>
-                    <strong>IBAN:</strong> FI00 1234 5678 9012 34
-                </div>
-                <div style="text-align: right;">
-                    <br>
-                    <strong>Viitenumero:</strong> 10427
-                </div>
-            </div>
         </div>
     </div>
 
@@ -129,7 +66,7 @@
         }
 
         function luoPDF() {
-            // Hae arvot
+            // Hae lomakkeen arvot
             const laskuttaja = document.getElementById('laskuttaja').value || 'Oma Nimi';
             const laskuttaja_yt = document.getElementById('laskuttaja_ytunnus').value;
             const asiakas = document.getElementById('asiakas').value || 'Tuntematon asiakas';
@@ -140,45 +77,93 @@
             // Laske summat
             const alv = hinta * 0.255;
             const yhteensa = hinta + alv;
+            const muotoile = (summa) => summa.toFixed(2).replace('.', ',') + ' EUR';
 
-            // Päivitä tekstit
-            document.getElementById('out-laskuttaja').innerText = laskuttaja;
-            document.getElementById('out-footer-laskuttaja').innerText = laskuttaja;
-            document.getElementById('out-asiakas').innerText = asiakas;
-            document.getElementById('out-kuvaus').innerText = kuvaus;
-            document.getElementById('out-pvm').innerText = formatoiPvm(0);
-            document.getElementById('out-erapaiva').innerText = formatoiPvm(14);
+            // Alusta PDF
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+
+            // 1. OTSIKKO
+            doc.setFontSize(24);
+            doc.setTextColor(37, 99, 235); // Sininen
+            doc.setFont("helvetica", "bold");
+            doc.text("LASKU", 20, 30);
+
+            // 2. PÄIVÄMÄÄRÄT
+            doc.setFontSize(10);
+            doc.setTextColor(0, 0, 0);
+            doc.setFont("helvetica", "normal");
+            doc.text(`Pvm: ${formatoiPvm(0)}`, 190, 25, { align: "right" });
+            doc.text(`Erapaiva: ${formatoiPvm(14)}`, 190, 31, { align: "right" });
+
+            // Yläviiva
+            doc.setDrawColor(37, 99, 235);
+            doc.setLineWidth(0.5);
+            doc.line(20, 38, 190, 38);
+
+            // 3. OSOITETIEDOT
+            doc.setFontSize(9);
+            doc.setTextColor(107, 114, 128); // Harmaa
+            doc.setFont("helvetica", "bold");
+            doc.text("LASKUTTAJA", 20, 50);
+            doc.text("ASIAKAS", 105, 50);
+
+            doc.setFontSize(12);
+            doc.setTextColor(17, 24, 39); // Tummanharmaa
+            doc.text(laskuttaja, 20, 56);
+            doc.text(asiakas, 105, 56);
+
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            if (laskuttaja_yt) doc.text(`Y-tunnus: ${laskuttaja_yt}`, 20, 62);
+            if (asiakas_yt) doc.text(`Y-tunnus: ${asiakas_yt}`, 105, 62);
+
+            // 4. TAULUKON OTSIKOT
+            doc.setFillColor(243, 244, 246); // Vaaleanharmaa tausta
+            doc.rect(20, 75, 170, 10, "F");
+            doc.setFont("helvetica", "bold");
+            doc.text("Kuvaus", 23, 82);
+            doc.text("Veroton hinta", 187, 82, { align: "right" });
+
+            // 5. TAULUKON SISÄLTÖ
+            doc.setFont("helvetica", "normal");
+            doc.text(kuvaus, 23, 93);
+            doc.text(muotoile(hinta), 187, 93, { align: "right" });
             
-            // Y-tunnusten näkyvyys
-            document.getElementById('out-laskuttaja-ytunnus-container').style.display = laskuttaja_yt ? 'block' : 'none';
-            if (laskuttaja_yt) document.getElementById('out-laskuttaja-ytunnus').innerText = laskuttaja_yt;
+            // Alaviiva
+            doc.setDrawColor(229, 231, 235);
+            doc.line(20, 98, 190, 98);
 
-            document.getElementById('out-asiakas-ytunnus-container').style.display = asiakas_yt ? 'block' : 'none';
-            if (asiakas_yt) document.getElementById('out-asiakas-ytunnus').innerText = asiakas_yt;
+            // 6. SUMMAT
+            doc.setFontSize(11);
+            doc.text("ALV (25,5 %):", 130, 110);
+            doc.text(muotoile(alv), 187, 110, { align: "right" });
 
-            // Hinnat
-            const muotoile = (summa) => summa.toFixed(2).replace('.', ',') + ' €';
-            document.getElementById('out-hinta').innerText = muotoile(hinta);
-            document.getElementById('out-alv').innerText = muotoile(alv);
-            document.getElementById('out-yhteensa').innerText = muotoile(yhteensa);
+            doc.setFontSize(14);
+            doc.setFont("helvetica", "bold");
+            doc.text("Yhteensa:", 130, 120);
+            doc.text(muotoile(yhteensa), 187, 120, { align: "right" });
+            
+            // Loppusumman viiva
+            doc.setDrawColor(37, 99, 235);
+            doc.line(130, 124, 190, 124);
 
-            // Generoi PDF kiinteillä asetuksilla (korjaa mobiilivirheet)
-            const element = document.getElementById('lasku-pohja');
+            // 7. ALATUNNISTE (Maksutiedot)
+            doc.setDrawColor(229, 231, 235);
+            doc.line(20, 270, 190, 270);
+            
+            doc.setFontSize(9);
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(107, 114, 128);
+            doc.text(`Saaja: ${laskuttaja}`, 20, 277);
+            doc.text("IBAN: FI00 1234 5678 9012 34", 20, 282);
+            
+            doc.setFont("helvetica", "bold");
+            doc.text("Viitenumero: 10427", 190, 282, { align: "right" });
+
+            // Tallenna PDF
             const tiedostonimi = 'Lasku_' + asiakas.replace(/\s+/g, '_') + '.pdf';
-            
-            const opt = {
-                margin:       10, // mm
-                filename:     tiedostonimi,
-                image:        { type: 'jpeg', quality: 1 },
-                html2canvas:  { 
-                    scale: 2, 
-                    scrollY: 0, // Estää yläreunan tyhjän tilan, jos olet skrollannut alaspäin
-                    windowWidth: 800 // Pakottaa A4-työpöytäasettelun riippumatta puhelimen koosta
-                },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            html2pdf().set(opt).from(element).save();
+            doc.save(tiedostonimi);
         }
     </script>
 </body>
