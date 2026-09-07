@@ -17,14 +17,14 @@
             <!-- Yleiset tiedot (Ylinnä) -->
             <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3 shadow-sm">
                 <h2 class="text-xs font-bold text-blue-600 uppercase tracking-wider">Laskun perustiedot</h2>
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Laskun numero</label>
-                        <input type="number" id="laskun_numero" value="1001" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-bold text-gray-800">
+                <div class="flex gap-3">
+                    <div class="w-1/3">
+                        <label class="block text-sm font-medium text-gray-700 mb-1 whitespace-nowrap">Laskun nro</label>
+                        <input type="number" id="laskun_numero" value="1001" class="w-full border border-gray-300 rounded-lg px-2 py-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-bold text-gray-800">
                     </div>
-                    <div>
+                    <div class="w-2/3">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Eräpäivä</label>
-                        <input type="date" id="erapaiva" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <input type="date" id="erapaiva" class="w-full border border-gray-300 rounded-lg px-2 py-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                     </div>
                 </div>
             </div>
@@ -73,12 +73,12 @@
             <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-3">
                 <h2 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Laskutettava työ</h2>
                 
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
+                <div class="flex gap-3">
+                    <div class="w-1/3">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Työn pvm</label>
-                        <input type="date" id="tyo_pvm" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <input type="date" id="tyo_pvm" class="w-full border border-gray-300 rounded-lg px-2 py-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                     </div>
-                    <div>
+                    <div class="w-2/3">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Kuvaus</label>
                         <input type="text" id="kuvaus" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Esim. Ikkunoiden pesu">
                     </div>
@@ -172,7 +172,6 @@
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
 
-            // OTSIKKO JA PÄIVÄMÄÄRÄT
             doc.setFontSize(24);
             doc.setTextColor(37, 99, 235);
             doc.setFont("helvetica", "bold");
@@ -189,7 +188,6 @@
             doc.setLineWidth(0.5);
             doc.line(20, 42, 190, 42);
 
-            // OSOITETIEDOT
             doc.setFontSize(9);
             doc.setTextColor(107, 114, 128);
             doc.setFont("helvetica", "bold");
@@ -215,7 +213,6 @@
             if (asiakas_osoite) { aY += 5; doc.text(asiakas_osoite, 105, aY); }
             if (asiakas_yt) { aY += 5; doc.text(`Y-tunnus: ${asiakas_yt}`, 105, aY); }
 
-            // TAULUKKO
             doc.setFillColor(243, 244, 246);
             doc.rect(20, 82, 170, 10, "F");
             doc.setFont("helvetica", "bold");
@@ -233,7 +230,6 @@
             doc.setDrawColor(229, 231, 235);
             doc.line(20, 106, 190, 106);
 
-            // SUMMAT
             doc.setFontSize(11);
             const alvOtsikko = `ALV (${alvValintaStr.replace('.', ',')} %):`;
             doc.text(alvOtsikko, 130, 118);
@@ -247,7 +243,6 @@
             doc.setDrawColor(37, 99, 235);
             doc.line(130, 132, 190, 132);
 
-            // ALATUNNISTE
             doc.setDrawColor(229, 231, 235);
             doc.line(20, 270, 190, 270);
             
