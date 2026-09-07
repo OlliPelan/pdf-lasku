@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         <div class="space-y-6">
             
             <!-- Laskun perustiedot -->
-            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-4 shadow-sm">
+            <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-4 shadow-sm w-full">
                 <h2 class="text-xs font-bold text-blue-600 uppercase tracking-wider">Laskun perustiedot</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
@@ -24,7 +24,6 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Eräpäivä</label>
-                        <!-- KÄÄRE PÄIVÄMÄÄRÄLLE (Estää iOS-laitteiden ylivuodon) -->
                         <div class="flex w-full bg-[#FDF8EE] border border-gray-300 rounded-lg overflow-hidden focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
                             <input type="date" id="erapaiva" class="w-full min-w-0 bg-transparent px-3 py-2.5 outline-none border-0 appearance-none">
                         </div>
@@ -78,7 +77,6 @@
                 <div class="grid grid-cols-1 gap-3">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Työn pvm</label>
-                        <!-- KÄÄRE PÄIVÄMÄÄRÄLLE -->
                         <div class="flex w-full bg-[#FDF8EE] border border-gray-300 rounded-lg overflow-hidden focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
                             <input type="date" id="tyo_pvm" class="w-full min-w-0 bg-transparent px-3 py-2.5 outline-none border-0 appearance-none">
                         </div>
@@ -150,17 +148,45 @@
         }
 
         function luoPDF() {
+            // --- VALIDOINTI ALKAA ---
+            const l_yt_input = document.getElementById('laskuttaja_ytunnus').value.trim();
+            const a_yt_input = document.getElementById('asiakas_ytunnus').value.trim();
+            const syotetty_iban = document.getElementById('iban').value.trim();
+            const ytRegex = /^\d{7}-\d$/;
+
+            if (l_yt_input && !ytRegex.test(l_yt_input)) {
+                alert("Laskuttajan Y-tunnus on virheellinen.\nOikea muoto on esim. 1234567-8");
+                return;
+            }
+            if (a_yt_input && !ytRegex.test(a_yt_input)) {
+                alert("Asiakkaan Y-tunnus on virheellinen.\nOikea muoto on esim. 1234567-8");
+                return;
+            }
+
+            let puhdasIban = "";
+            if (syotetty_iban) {
+                // Poistetaan välilyönnit ja muutetaan isoiksi kirjaimiksi
+                puhdasIban = syotetty_iban.replace(/\s+/g, '').toUpperCase();
+                if (!/^FI\d{16}$/.test(puhdasIban)) {
+                    alert("IBAN-tilinumero on virheellinen.\nSuomalainen IBAN alkaa 'FI' ja sisältää 16 numeroa.");
+                    return;
+                }
+                // Muotoillaan IBAN nätiksi PDF:ää varten (4 merkin ryhmiin)
+                puhdasIban = puhdasIban.match(/.{1,4}/g).join(' ');
+            }
+            // --- VALIDOINTI LOPPUU ---
+
             const laskun_numero = document.getElementById('laskun_numero').value || '1001';
             const viitenumero = luoViitenumero(laskun_numero);
 
             const laskuttaja = document.getElementById('laskuttaja').value || 'Oma Nimi';
             const laskuttaja_osoite = document.getElementById('laskuttaja_osoite').value;
-            const laskuttaja_yt = document.getElementById('laskuttaja_ytunnus').value;
-            const iban = document.getElementById('iban').value || 'Ei ilmoitettu';
+            const laskuttaja_yt = l_yt_input;
+            const iban = puhdasIban || 'Ei ilmoitettu';
             
             const asiakas = document.getElementById('asiakas').value || 'Tuntematon asiakas';
             const asiakas_osoite = document.getElementById('asiakas_osoite').value;
-            const asiakas_yt = document.getElementById('asiakas_ytunnus').value;
+            const asiakas_yt = a_yt_input;
             
             const erapaiva = muotoilePvmSuomeksi(document.getElementById('erapaiva').value);
             const tyo_pvm = muotoilePvmSuomeksi(document.getElementById('tyo_pvm').value);
@@ -271,4 +297,3 @@
     </script>
 </body>
 </html>
-
